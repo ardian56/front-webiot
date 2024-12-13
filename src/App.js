@@ -10,13 +10,8 @@ function App() {
 
   const fetchLogHistory = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/log-history`);
-      if (response.ok) {
-        const data = await response.json();
-        setLogHistory(data);
-      } else {
-        console.error('Failed to fetch log history');
-      }
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/log-history`);
+      setLogHistory(response.data);
     } catch (error) {
       console.error('Error fetching log history:', error);
     }
@@ -24,17 +19,14 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/save`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ tanggal, jam }),
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/save`, {
+        tanggal,
+        jam,
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert('Data berhasil disimpan!');
         fetchLogHistory();
       } else {
@@ -59,7 +51,6 @@ function App() {
 
   return (
     <div className={`App`}>
-
       <h2>Masukkan Tanggal dan Jam</h2>
       
       <form onSubmit={handleSubmit}>
