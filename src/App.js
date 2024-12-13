@@ -7,6 +7,10 @@ function App() {
   const [logHistory, setLogHistory] = useState([]);
   const [showLog, setShowLog] = useState(false);
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   const fetchLogHistory = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/log-history`);
@@ -57,7 +61,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={`App`}>
+      
       <h2>Masukkan Tanggal dan Jam</h2>
       
       <form onSubmit={handleSubmit}>
