@@ -14,7 +14,7 @@ function App() {
 
   const fetchLogHistory = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/log-history`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL_L}`);
       if (response.ok) {
         const data = await response.json();
         setLogHistory(data);
@@ -30,7 +30,7 @@ function App() {
     e.preventDefault();
     
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/save`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
