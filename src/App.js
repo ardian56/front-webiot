@@ -4,13 +4,8 @@ import './App.css';
 function App() {
   const [tanggal, setTanggal] = useState('');
   const [jam, setJam] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
   const [logHistory, setLogHistory] = useState([]);
   const [showLog, setShowLog] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   const fetchLogHistory = async () => {
     try {
@@ -62,13 +57,8 @@ function App() {
   }, []);
 
   return (
-    <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
-      <div className="buttons">
-        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-          {darkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </div>
-      
+    <div className={`App`}>
+
       <h2>Masukkan Tanggal dan Jam</h2>
       
       <form onSubmit={handleSubmit}>
