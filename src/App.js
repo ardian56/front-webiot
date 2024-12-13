@@ -21,7 +21,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/save`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}`, {
         tanggal,
         jam,
       });
