@@ -10,7 +10,7 @@ function App() {
 
   const fetchLogHistory = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL_L}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/log-history`);
       setLogHistory(response.data);
     } catch (error) {
       console.error('Error fetching log history:', error);
