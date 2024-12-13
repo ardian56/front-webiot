@@ -7,10 +7,6 @@ function App() {
   const [logHistory, setLogHistory] = useState([]);
   const [showLog, setShowLog] = useState(false);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   const fetchLogHistory = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/log-history`);
