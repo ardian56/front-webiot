@@ -86,7 +86,6 @@ function App() {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Tanggal</th>
                 <th>Jam</th>
               </tr>
@@ -94,7 +93,6 @@ function App() {
             <tbody>
               {logHistory.map((log) => (
                 <tr key={log.id}>
-                  <td>{log.id}</td>
                   <td>{log.tanggal}</td>
                   <td>{log.jam}</td>
                 </tr>
