@@ -70,8 +70,8 @@ function App() {
   return (
     <div className={`App`}>
       <header className="App-header">
-        <h1>Aplikasi Pencatat Waktu & Tanggal</h1>
-        <p>Catat dan lihat riwayat waktu penting Anda dengan mudah!</p>
+        <h1>Input Jam & Tanggal</h1>
+        <p>Input jam dan tanggal untuk mengendalikan IOT!</p>
         <div className="realtime-clock">
           <p>Waktu Saat Ini: {currentTime.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p className="time">{currentTime.toLocaleTimeString('id-ID')}</p>
@@ -84,10 +84,9 @@ function App() {
         </div>
       )}
 
-      {/* Konten Utama Desktop: Form dan Log History */}
-      <div className="main-content-wrapper">
+      <div className="main-content-wrapper"> {/* Ini akan menjadi container untuk form dan log */}
         <div className="form-section">
-          <h2>Masukkan Tanggal dan Jam</h2>
+          <h2>Input Data</h2> {/* Ubah judul di sini */}
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -118,10 +117,11 @@ function App() {
           </form>
         </div>
 
-        <div className="log-history-section"> {/* Wrapper baru untuk log */}
+        <div className="log-history-card"> {/* Ini adalah card terpisah untuk log */}
+          <h2>Riwayat Log</h2> {/* Judul untuk card log */}
           <div className="log-button-container">
             <button className="log-button" onClick={toggleLogView}>
-              {showLog ? 'Sembunyikan Riwayat Log' : 'Tampilkan Riwayat Log'}
+              {showLog ? 'Sembunyikan Log' : 'Tampilkan Log'}
             </button>
           </div>
 
