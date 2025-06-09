@@ -1,4 +1,3 @@
-/* General Body Styles */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f7f6;
@@ -16,12 +15,11 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
+  max-width: 700px; /* Default max-width untuk mobile/tablet */
   width: 100%;
   text-align: center;
 }
 
-/* Header */
 .App-header {
   margin-bottom: 30px;
   color: #2c3e50;
@@ -37,7 +35,6 @@ body {
   color: #555;
 }
 
-/* Realtime Clock */
 .realtime-clock {
   margin-top: 20px;
   background-color: #f0f8ff;
@@ -61,12 +58,11 @@ body {
   letter-spacing: 1px;
 }
 
-/* Form Section */
 .form-section {
   background-color: #ecf0f1;
   padding: 25px;
   border-radius: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Margin untuk mobile */
 }
 
 .form-section h2 {
@@ -127,7 +123,6 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-/* Message Display (Toast/Modal) */
 .message-display {
   padding: 15px;
   margin-bottom: 20px;
@@ -149,7 +144,6 @@ button[type="submit"]:disabled {
   border: 1px solid #f5c6cb;
 }
 
-/* Log Button */
 .log-button-container {
   margin-bottom: 30px;
 }
@@ -169,7 +163,6 @@ button[type="submit"]:disabled {
   background-color: #229a54;
 }
 
-/* Table Container */
 .table-container {
   max-height: 400px;
   overflow-y: auto;
@@ -208,4 +201,68 @@ tr:hover {
   padding: 20px;
   color: #777;
   font-style: italic;
+}
+
+/* MEDIA QUERIES UNTUK LAYAR DESKTOP */
+/* Terapkan gaya ini saat lebar layar minimal 768px (ukuran tablet/desktop kecil) */
+@media (min-width: 768px) {
+  .App {
+    max-width: 1200px; /* Lebar maksimal lebih besar untuk desktop */
+    padding: 40px;
+  }
+
+  .main-content-wrapper {
+    display: flex; /* Aktifkan Flexbox untuk tata letak samping */
+    gap: 30px; /* Jarak antar kolom */
+    align-items: flex-start; /* Elemen di atas, tidak merata */
+    margin-top: 30px;
+  }
+
+  .form-section,
+  .log-history-section {
+    flex: 1; /* Biarkan keduanya mengambil ruang yang sama */
+    min-width: 300px; /* Pastikan tidak terlalu kecil */
+  }
+
+  .form-section {
+    margin-bottom: 0; /* Hapus margin bawah di desktop karena sudah ada gap */
+  }
+
+  /* Sesuaikan form group agar sejajar di desktop */
+  form {
+    flex-direction: column; /* Tetap kolom di dalam form */
+  }
+
+  .form-group {
+    flex-direction: row; /* Label dan input berdampingan */
+    justify-content: space-between; /* Rata kiri dan kanan */
+    align-items: center;
+  }
+
+  label {
+    width: 30%; /* Beri ruang untuk label */
+    margin-bottom: 0;
+    text-align: right;
+    padding-right: 15px;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    width: 65%; /* Beri ruang untuk input */
+  }
+
+  button[type="submit"] {
+    margin-top: 20px; /* Tambahkan sedikit jarak setelah input */
+  }
+
+  .table-container {
+    max-height: 500px; /* Tinggikan sedikit untuk desktop */
+  }
+}
+
+/* Opsional: Penyesuaian untuk layar sangat lebar (misal > 1200px) */
+@media (min-width: 1200px) {
+  .App {
+    max-width: 1400px;
+  }
 }
