@@ -15,7 +15,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 700px; /* Default max-width untuk mobile/tablet */
+  max-width: 700px;
   width: 100%;
   text-align: center;
 }
@@ -58,14 +58,42 @@ body {
   letter-spacing: 1px;
 }
 
-.form-section {
+.message-display {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.message-display.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message-display.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Card Styling untuk Form dan Log */
+.form-section,
+.log-history-card {
   background-color: #ecf0f1;
   padding: 25px;
   border-radius: 8px;
-  margin-bottom: 30px; /* Margin untuk mobile */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Tambah bayangan agar terlihat seperti kartu */
 }
 
-.form-section h2 {
+.form-section {
+  margin-bottom: 30px; /* Margin bawah untuk mobile */
+}
+
+.form-section h2,
+.log-history-card h2 {
   color: #34495e;
   margin-bottom: 20px;
 }
@@ -123,29 +151,8 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-.message-display {
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
-}
-
-.message-display.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.message-display.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
 .log-button-container {
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Sesuaikan margin */
 }
 
 .log-button {
@@ -204,43 +211,38 @@ tr:hover {
 }
 
 /* MEDIA QUERIES UNTUK LAYAR DESKTOP */
-/* Terapkan gaya ini saat lebar layar minimal 768px (ukuran tablet/desktop kecil) */
 @media (min-width: 768px) {
   .App {
-    max-width: 1200px; /* Lebar maksimal lebih besar untuk desktop */
+    max-width: 1200px;
     padding: 40px;
   }
 
   .main-content-wrapper {
-    display: flex; /* Aktifkan Flexbox untuk tata letak samping */
-    gap: 30px; /* Jarak antar kolom */
-    align-items: flex-start; /* Elemen di atas, tidak merata */
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
     margin-top: 30px;
   }
 
   .form-section,
-  .log-history-section {
-    flex: 1; /* Biarkan keduanya mengambil ruang yang sama */
-    min-width: 300px; /* Pastikan tidak terlalu kecil */
+  .log-history-card { /* Terapkan flex untuk kedua kartu */
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 0; /* Hapus margin bawah di desktop */
   }
 
-  .form-section {
-    margin-bottom: 0; /* Hapus margin bawah di desktop karena sudah ada gap */
-  }
-
-  /* Sesuaikan form group agar sejajar di desktop */
   form {
-    flex-direction: column; /* Tetap kolom di dalam form */
+    flex-direction: column;
   }
 
   .form-group {
-    flex-direction: row; /* Label dan input berdampingan */
-    justify-content: space-between; /* Rata kiri dan kanan */
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
 
   label {
-    width: 30%; /* Beri ruang untuk label */
+    width: 30%;
     margin-bottom: 0;
     text-align: right;
     padding-right: 15px;
@@ -248,19 +250,18 @@ tr:hover {
 
   input[type="date"],
   input[type="time"] {
-    width: 65%; /* Beri ruang untuk input */
+    width: 65%;
   }
 
   button[type="submit"] {
-    margin-top: 20px; /* Tambahkan sedikit jarak setelah input */
+    margin-top: 20px;
   }
 
   .table-container {
-    max-height: 500px; /* Tinggikan sedikit untuk desktop */
+    max-height: 500px;
   }
 }
 
-/* Opsional: Penyesuaian untuk layar sangat lebar (misal > 1200px) */
 @media (min-width: 1200px) {
   .App {
     max-width: 1400px;
