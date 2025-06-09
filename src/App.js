@@ -70,45 +70,13 @@ function App() {
   return (
     <div className={`App`}>
       <header className="App-header">
-        <h1>Input Tanggal & Jam</h1>
-        <p>Input Tanggal & Jam untuk menjalankan IOT!</p>
+        <h1>Aplikasi Pencatat Waktu & Tanggal</h1>
+        <p>Catat dan lihat riwayat waktu penting Anda dengan mudah!</p>
         <div className="realtime-clock">
           <p>Waktu Saat Ini: {currentTime.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p className="time">{currentTime.toLocaleTimeString('id-ID')}</p>
         </div>
       </header>
-
-      <div className="form-section">
-        <h2>Masukkan Tanggal dan Jam</h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="tanggal">Tanggal:</label>
-            <input
-              type="date"
-              id="tanggal"
-              value={tanggal}
-              onChange={(e) => setTanggal(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="jam">Jam:</label>
-            <input
-              type="time"
-              id="jam"
-              value={jam}
-              onChange={(e) => setJam(e.target.value)}
-              required
-            />
-          </div>
-
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Menyimpan...' : 'Submit Data'}
-          </button>
-        </form>
-      </div>
 
       {message.text && (
         <div className={`message-display ${message.type}`}>
@@ -116,36 +84,73 @@ function App() {
         </div>
       )}
 
-      <div className="log-button-container">
-        <button className="log-button" onClick={toggleLogView}>
-          {showLog ? 'Sembunyikan Riwayat Log' : 'Tampilkan Riwayat Log'}
-        </button>
-      </div>
+      {/* Konten Utama Desktop: Form dan Log History */}
+      <div className="main-content-wrapper">
+        <div className="form-section">
+          <h2>Masukkan Tanggal dan Jam</h2>
 
-      {showLog && (
-        <div className="table-container">
-          {logHistory.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Jam</th>
-                </tr>
-              </thead>
-              <tbody>
-                {logHistory.map((log, index) => (
-                  <tr key={index}>
-                    <td>{log.tanggal}</td>
-                    <td>{log.jam}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p className="empty-log-message">Belum ada log yang tersimpan.</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="tanggal">Tanggal:</label>
+              <input
+                type="date"
+                id="tanggal"
+                value={tanggal}
+                onChange={(e) => setTanggal(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="jam">Jam:</label>
+              <input
+                type="time"
+                id="jam"
+                value={jam}
+                onChange={(e) => setJam(e.target.value)}
+                required
+              />
+            </div>
+
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Menyimpan...' : 'Submit Data'}
+            </button>
+          </form>
+        </div>
+
+        <div className="log-history-section"> {/* Wrapper baru untuk log */}
+          <div className="log-button-container">
+            <button className="log-button" onClick={toggleLogView}>
+              {showLog ? 'Sembunyikan Riwayat Log' : 'Tampilkan Riwayat Log'}
+            </button>
+          </div>
+
+          {showLog && (
+            <div className="table-container">
+              {logHistory.length > 0 ? (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Jam</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {logHistory.map((log, index) => (
+                      <tr key={index}>
+                        <td>{log.tanggal}</td>
+                        <td>{log.jam}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="empty-log-message">Belum ada log yang tersimpan.</p>
+              )}
+            </div>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
