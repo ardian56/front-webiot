@@ -70,8 +70,8 @@ function App() {
   return (
     <div className={`App`}>
       <header className="App-header">
-        <h1>Aplikasi Pencatat Waktu & Tanggal</h1>
-        <p>Catat dan lihat riwayat waktu penting Anda dengan mudah!</p>
+        <h1>Input Tanggal & Jam</h1>
+        <p>Input Tanggal & Jam untuk menjalankan IOT!</p>
         <div className="realtime-clock">
           <p>Waktu Saat Ini: {currentTime.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p className="time">{currentTime.toLocaleTimeString('id-ID')}</p>
